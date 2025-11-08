@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Newspaper, Megaphone, Lightbulb, ImageIcon } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Newspaper, Megaphone, Lightbulb, ImageIcon, Paperclip } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import Layout from "@/components/Layout";
 
@@ -82,6 +85,43 @@ const Jornal = () => {
                 </div>
               ))}
             </div>
+
+            {/* Create Post Dialog */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button className="w-full mt-6 rounded-full">
+                  Criar Postagem
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-3xl">
+                <div className="space-y-6">
+                  <Input 
+                    placeholder="Título"
+                    className="border-border rounded-lg"
+                  />
+                  
+                  <Textarea 
+                    placeholder="Descrição"
+                    className="min-h-[300px] border-border rounded-lg resize-none"
+                  />
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="border-2 border-dashed border-border rounded-3xl aspect-video flex flex-col items-center justify-center gap-2 hover:bg-accent/50 transition-colors cursor-pointer">
+                      <ImageIcon className="w-12 h-12 text-muted-foreground" strokeWidth={1} />
+                      <span className="text-sm text-muted-foreground">Imagem</span>
+                    </div>
+                    <div className="border-2 border-dashed border-border rounded-3xl aspect-video flex flex-col items-center justify-center gap-2 hover:bg-accent/50 transition-colors cursor-pointer">
+                      <Paperclip className="w-12 h-12 text-muted-foreground" strokeWidth={1} />
+                      <span className="text-sm text-muted-foreground">Arquivo</span>
+                    </div>
+                  </div>
+
+                  <Button className="w-full rounded-full">
+                    Enviar
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
           {/* Right Column - Recent Posts */}

@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Newspaper, Megaphone, Lightbulb, ImageIcon, Paperclip, Send } from "lucide-react";
+import { Newspaper, Megaphone, Lightbulb, ImageIcon, Paperclip, UserX } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import Layout from "@/components/Layout";
 
 const Reclame = () => {
+  const [isAnonymous, setIsAnonymous] = useState(false);
   return (
     <Layout>
       <div className="max-w-7xl mx-auto">
@@ -61,8 +63,13 @@ const Reclame = () => {
                 placeholder="Escreva a sua situação"
                 className="flex-1 bg-transparent border-none outline-none text-sm placeholder:text-muted-foreground"
               />
-              <button className="p-1 hover:bg-accent rounded-full transition-colors">
-                <Send className="w-5 h-5 text-muted-foreground" />
+              <button 
+                onClick={() => setIsAnonymous(!isAnonymous)}
+                className={`p-1 rounded-full transition-colors ${
+                  isAnonymous ? 'text-primary hover:text-primary/80' : 'text-muted-foreground hover:bg-accent'
+                }`}
+              >
+                <UserX className="w-5 h-5" />
               </button>
             </div>
             <Button className="px-8 rounded-full">
