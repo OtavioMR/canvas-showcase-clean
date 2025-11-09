@@ -84,10 +84,10 @@ const Sugestoes = () => {
 
         {/* Navigation Tabs */}
         <div className="flex gap-3 mb-8">
-          <NavLink to="/jornal">
+          <NavLink to="/avisos">
             <Button variant="outline" className="gap-2">
               <Newspaper className="w-4 h-4" />
-              Jornal
+              Avisos
             </Button>
           </NavLink>
           <NavLink to="/melhorias">

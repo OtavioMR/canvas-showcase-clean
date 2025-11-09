@@ -33,7 +33,7 @@ const Login = () => {
         const token = response.data.access_token;
         localStorage.setItem("token", token); // Armazena o token no localStorage
         console.log("Token armazenado:", token);
-        navigate("/jornal"); // Redireciona para a página de Jornal
+        navigate("/avisos"); // Redireciona para a página de Jornal
       } else {
         setErrorMessage("Login ou senha inválidos");
       }

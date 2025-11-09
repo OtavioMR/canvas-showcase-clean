@@ -19,7 +19,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/jornal" replace />} />
-          <Route path="/jornal" element={<Jornal />} />
+          <Route path="/avisos" element={<Jornal />} />
           <Route path="/melhorias" element={<Reclame />} />
           <Route path="/sugestoes" element={<Sugestoes />} />
           <Route path="/login" element={<LoginAluno/>} />
