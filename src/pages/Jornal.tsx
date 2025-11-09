@@ -133,10 +133,10 @@ const Jornal = () => {
               Jornal
             </Button>
           </NavLink>
-          <NavLink to="/reclame">
+          <NavLink to="/melhorias">
             <Button variant="outline" className="gap-2">
               <Megaphone className="w-4 h-4" />
-              Reclame aqui
+              Melhorias estruturais
             </Button>
           </NavLink>
           <NavLink to="/sugestoes">

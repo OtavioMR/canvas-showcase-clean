@@ -6,7 +6,6 @@ import Layout from "@/components/Layout";
 import axios from "axios";
 
 const Reclame = () => {
-  const [isAnonymous, setIsAnonymous] = useState(false);
   const [situation, setSituation] = useState("");  // Estado para a situação da reclamação
   const [loading, setLoading] = useState(false);   // Estado de loading para a requisição
   const [file, setFile] = useState<File | null>(null);  // Estado para o arquivo anexado
@@ -30,7 +29,6 @@ const Reclame = () => {
 
     const formData = new FormData();
     formData.append("mensagem", situation);        // Envia a mensagem
-    formData.append("anonimato", String(isAnonymous));  // Envia a informação de anonimato
 
     // Adiciona o arquivo, se existir
     if (file) {
@@ -54,7 +52,6 @@ const Reclame = () => {
 
       // Resetar o estado após o envio
       setSituation("");
-      setIsAnonymous(false);
       setFile(null);  // Limpa o arquivo após o envio
 
       // Resetando o estado de loading
@@ -108,10 +105,10 @@ const Reclame = () => {
               Jornal
             </Button>
           </NavLink>
-          <NavLink to="/reclame">
+          <NavLink to="/melhorias">
             <Button variant={window.location.pathname === "/reclame" ? "default" : "outline"} className="gap-2">
               <Megaphone className="w-4 h-4" />
-              Reclame aqui
+              Melhorias estruturais
             </Button>
           </NavLink>
           <NavLink to="/sugestoes">
@@ -130,7 +127,7 @@ const Reclame = () => {
               <ImageIcon className="w-16 h-16 text-muted-foreground" strokeWidth={1} />
             </div>
             <button className="px-6 py-2 border border-border rounded-full text-muted-foreground hover:bg-accent transition-colors">
-              Reclamações
+              Melhorias estruturais
             </button>
           </div>
 
@@ -145,12 +142,6 @@ const Reclame = () => {
                 value={situation}
                 onChange={(e) => setSituation(e.target.value)} // Atualiza o estado
               />
-              <button 
-                onClick={() => setIsAnonymous(!isAnonymous)}
-                className={`p-1 rounded-full transition-colors ${isAnonymous ? 'text-primary hover:text-primary/80' : 'text-muted-foreground hover:bg-accent'}`}
-              >
-                <UserX className="w-5 h-5" />
-              </button>
             </div>
 
             {/* File Input */}
@@ -170,14 +161,12 @@ const Reclame = () => {
 
         {/* List of Previous Reclamations */}
         <div className="mt-8">
-          <h3 className="text-xl font-semibold mb-4">Minhas Reclamações</h3>
+          <h3 className="text-xl font-semibold mb-4">Meus envios</h3>
           <div className="space-y-4">
             {reclamacoes.length > 0 ? (
               reclamacoes.map((reclamacao) => (
                 <div key={reclamacao.id} className="p-4 border rounded-xl bg-muted">
                   <p><strong>Mensagem:</strong> {reclamacao.mensagem}</p>
-                  <p><strong>Anonimato:</strong> {reclamacao.anonimato ? "Sim" : "Não"}</p>
-                  <p><strong>Data:</strong> {new Date(reclamacao.createdAt).toLocaleDateString()}</p>
                   {/* Se houver um arquivo anexado */}
                   {reclamacao.arquivo && (
                     <a href={`http://localhost:3000/uploads/${reclamacao.arquivo}`} target="_blank" rel="noopener noreferrer">
